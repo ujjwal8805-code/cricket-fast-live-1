@@ -22,6 +22,8 @@ jobs:
           flutter create cricket_fast_live
           cp main.dart cricket_fast_live/lib/main.dart
           cd cricket_fast_live
+          flutter pub add http
+          sed -i 's|<application|<uses-permission android:name="android.permission.INTERNET"/>\n    <application|' android/app/src/main/AndroidManifest.xml
           flutter pub get
           flutter build apk --release
       - name: Upload APK
